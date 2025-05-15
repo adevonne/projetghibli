@@ -1,0 +1,64 @@
+<Window x:Class="ProjetGhibliTicketApp.AdminTicketViewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gestion des Tickets" Height="450" Width="900">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Deconnexion -->
+            <RowDefinition Height="Auto"/>
+            <!-- Barre de recherche + bouton creation -->
+            <RowDefinition Height="*"/>
+            <!-- DataGrid -->
+        </Grid.RowDefinitions>
+
+        <!-- Bouton deconnexion en haut a droite -->
+        <Button Content="Deconnexion"
+                Grid.Row="0"
+                HorizontalAlignment="Right"
+                Width="100" Height="30"
+                Click="LogoutButton_Click"
+                Margin="0,0,0,10"/>
+
+        <!-- StackPanel vertical pour barre de recherche et bouton creation -->
+        <StackPanel Grid.Row="1"
+                    VerticalAlignment="Top"
+                    Margin="0,0,0,10">
+
+            <!-- Barre de recherche centree -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox Name="SearchTextBox" Width="180" Height="30" VerticalContentAlignment="Center"/>
+                <Button Content="Rechercher" Name="SearchButton" Width="90" Height="30" Margin="10,0,0,0" Click="SearchButton_Click"/>
+            </StackPanel>
+
+            <!-- Bouton creation a gauche -->
+            <Button Content="Creation Ticket"
+                    Name="btnCreationTicket"
+                    Click="btnCreationTicket_Click"
+                    Width="150" Height="30"
+                    HorizontalAlignment="Left"
+                    Margin="0,10,0,0"/>
+        </StackPanel>
+
+        <!-- Tableau des tickets -->
+        <DataGrid x:Name="TicketsDataGrid"
+                  Grid.Row="2"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  Margin="0,10,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding IdTicket}" Width="Auto"/>
+                <DataGridTextColumn Header="Nom Ticket" Binding="{Binding NomTicket}" Width="*"/>
+                <DataGridTextColumn Header="Demande" Binding="{Binding Demande}" Width="*"/>
+                <DataGridTextColumn Header="Date Creation" Binding="{Binding DateCreation}" Width="Auto"/>
+                <DataGridTextColumn Header="Nom Utilisateur" Binding="{Binding NomUtilisateur}" Width="Auto"/>
+                <DataGridTextColumn Header="Technicien" Binding="{Binding Technicien}" Width="Auto"/>
+                <DataGridTextColumn Header="Categorie" Binding="{Binding Categorie}" Width="Auto"/>
+                <DataGridTextColumn Header="Service" Binding="{Binding Service}" Width="Auto"/>
+                <DataGridTextColumn Header="Statut" Binding="{Binding Statut}" Width="Auto"/>
+                <DataGridTextColumn Header="Priorite" Binding="{Binding Priorite}" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
